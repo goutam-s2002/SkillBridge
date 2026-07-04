@@ -1,0 +1,55 @@
+================================================================================
+SkillBridge AI - Project Description
+================================================================================
+
+1. PROJECT OVERVIEW
+--------------------------------------------------------------------------------
+Project Name: SkillBridge AI
+Tagline: Career Guidance & Job Assistant
+Track: Agents for Good
+Target Audience: Students, Freshers, and Job Seekers transition to professional roles.
+
+2. PROBLEM STATEMENT
+--------------------------------------------------------------------------------
+Students and freshers often face high career entry friction due to:
+- Lack of clarity on which tech stack or career roadmap skills to master.
+- Outdated, non-ATS-optimized resumes missing crucial keyword density.
+- Difficulty matching personal skill milestones against real-world job postings.
+- Inadequate preparation for technical and behavioral mock interview sessions.
+
+3. SOLUTION DESCRIPTION
+--------------------------------------------------------------------------------
+SkillBridge AI is a high-fidelity Single Page Application (SPA) designed to act
+as a continuous career coach and navigator. It leverages local caching, modern
+CSS layouts, and interactive workflows to guide the user from training to hiring.
+
+4. CORE MODULES & FEATURES
+--------------------------------------------------------------------------------
+- Skill Roadmaps: Interactive node trees mapping foundations to advanced levels 
+  across Frontend Developer, Data Scientist, and Product Manager tracks. Clicking 
+  milestones loads tutorials and checkbox updates for readiness metrics.
+  
+- Resume ATS Optimizer: Audit interface providing scoring dials, missing keyword 
+  extraction, ATS-style checklists, and side-by-side (Before vs. After) sentence 
+  revisions to maximize ATS compliance.
+  
+- Job Matcher: Dynamically computes compatibility scores between the student's 
+  completed roadmap milestones and target job criteria. Features a kanban board 
+  (Applied -> Interviewing -> Offered) to track applications.
+  
+- Interview Prep Room: Interactive chat screening technical and behavioral 
+  concepts. Features a simulated speech input module and provides grades (A+, B) 
+  strengths/gaps breakdowns, and model answers.
+  
+- Persistent AI Career Coach: Sidebar drawer chatbot enabling user queries on 
+  styling, templates, and general guidance at any stage of the application.
+
+5. TECHNICAL ARCHITECTURE
+--------------------------------------------------------------------------------
+- Frontend: HTML5 semantic tags, CSS3 custom variables/glassmorphism design.
+- Logic: ES6+ JavaScript controller.
+- Database: Caches and persists progress using browser LocalStorage.
+- Deployment: Fully configured vercel.json for clean URLs, ready for static 
+  hosting (Vercel, GitHub Pages, Netlify).
+
+================================================================================
