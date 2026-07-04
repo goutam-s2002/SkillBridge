@@ -5,44 +5,106 @@ SkillBridge AI is a premium, interactive web-based career navigator and assistan
 
 ---
 
-## 🚀 Key Features
+## 📸 Visual Layout
 
-*   **Skill Roadmaps**: Interactive learning paths for **Frontend Developer**, **Data Scientist**, and **Associate Product Manager** tracks. Check off skills as you learn to watch your career readiness score grow.
-*   **Resume ATS Optimizer**: Instantly audit your resume score, receive specific writing revisions (Before vs. After diffs), and discover critical keyword gaps based on target roles.
-*   **Job Matcher & Tracker**: Match with jobs based on your acquired skills and progress status. Track active applications in an integrated Kanban board (Applied ➔ Interviewing ➔ Offered).
-*   **Interview Prep Simulator**: Practice mock behavioral and technical interviews. Enter or simulate voice responses to get graded (A+, B, C) with lists of strengths, terminology gaps, and ideal answers.
-*   **Conversational Career Coach**: A persistent floating AI Assistant that can answer career, roadmap, or styling questions at any time.
+### Dashboard Hub
+![Dashboard View](./screenshots/dashboard.png)
 
----
-
-## 🛠️ Technology Stack
-
-This application is built with a **Vanilla Web Stack** to guarantee zero-friction deployments and instant, lightweight performance:
-*   **Structure**: HTML5 Semantic markup
-*   **Presentation**: CSS3 variables, glassmorphism design system, responsive grids, custom scrollbars, and keyframe transitions
-*   **Logic**: ES6+ JavaScript State controller
-*   **State Persistence**: `localStorage` integration to save your progress, resumes, job tracker columns, and interview scores across sessions
-*   **Icons**: Lucide Icons CDN integration
+### Skill Roadmaps
+![Roadmaps View](./screenshots/roadmaps.png)
 
 ---
 
-## ⚡ Deployment Options
+## 🔄 Application Flow & System Architecture
 
-The project is fully **deployment-ready** and can be hosted for free on any static web hosting provider:
+Below is the conceptual flow of a student's journey through the SkillBridge AI platform:
 
-### 1. Vercel (Recommended)
-1. Install Vercel CLI: `npm i -g vercel`
-2. Run `vercel` in the project root directory.
-3. Follow the prompts to launch instantly.
-*Alternatively, push this directory to a GitHub repository and import it into the Vercel Dashboard.*
+```mermaid
+graph TD
+    Start([Student Starts Journey]) --> SelectTrack[Select Target Track: Frontend / Data Science / PM]
+    
+    subgraph Module 1: Skill Navigator
+        SelectTrack --> LoadRoadmap[Load Interactive Skill Roadmap]
+        LoadRoadmap --> LearnNodes[Access Learning Resources & Tutorials]
+        LearnNodes --> ToggleComplete[Mark Skills as Completed]
+    end
 
-### 2. GitHub Pages
-1. Push the code to a GitHub repository.
-2. Go to **Settings** ➔ **Pages**.
-3. Under **Build and deployment**, select **Deploy from a branch** and choose the `main` branch.
-4. Click save, and your site will be live in seconds.
+    subgraph Core Engine: Metrics Sync
+        ToggleComplete --> SyncMetrics{Calculate Readiness & Sync State}
+        SyncMetrics --> UpdateReadiness[Update Career Readiness Score]
+    end
 
-### 3. Netlify
-1. Create a free account on [Netlify](https://www.netlify.com/).
-2. Drag and drop the project folder directly into the Netlify Web App Uploader.
-3. Your site is instantly deployed!
+    subgraph Module 2: Resume Optimizer
+        UpdateReadiness --> UploadResume[Upload Resume PDF / Text]
+        UploadResume --> ATSScan[Simulate ATS Audit Scan]
+        ATSScan --> DiffOutput[Show Keyword Gaps & Before/After Writing Diff]
+    end
+
+    subgraph Module 3: Job Matcher
+        DiffOutput --> CalcMatchScore[Calculate Job Compatibility %]
+        CalcMatchScore --> FilterJobs[Display Tailored Vacancies & Skill Gaps]
+        FilterJobs --> ApplyKanban[Add Applied Jobs to Kanban Board Tracker]
+    end
+
+    subgraph Module 4: Interview Prep Room
+        ApplyKanban --> InitInterviewer[Initialize AI Mock Interviewer]
+        InitInterviewer --> AnswerQ[Submit Text / Voice-simulated Answers]
+        AnswerQ --> GradeResponse[Real-Time Scoring, Strengths & Gaps Review]
+    end
+
+    subgraph Module 5: Persistent AI Coach
+        UpdateReadiness --> AICoach[Floating Coach Drawer: Ask Contextual Career Questions]
+        AnswerQ --> AICoach
+    end
+
+    GradeResponse --> EndState([Deploy-Ready Placement Success])
+```
+
+---
+
+## 📘 Detailed Feature Guide
+
+### 1. 🗺️ Skill Roadmaps (Module 1)
+*   **Dynamic Tracks**: Tracks are available for **Frontend Developer**, **Data Scientist**, and **Associate Product Manager**.
+*   **Interactive Node Graph**: Connects skill milestones sequentially (Foundational ➔ Intermediate ➔ Advanced). Completed nodes are styled with an active emerald border and checkmark.
+*   **Inspector Panel**: Click a node to load curated resources (MDN, GitHub, Kaggle, SVPG tutorials), sub-topics checklist, and a toggle button to mark complete.
+*   **Readiness Scoring**: Completing nodes updates the local state and syncs with the overall dashboard readiness progress bar.
+
+### 2. 📄 Resume ATS Optimizer (Module 2)
+*   **File Drop Zone**: Supports drag-and-drop file inputs or direct text pasting.
+*   **ATS Audit Score**: Returns a 0-100 rating based on keyword matching density, action-verb counts, and formatting checklists.
+*   **Interactive Diffs**: Provides red/green line comparisons of generic statements vs. high-impact, quantified achievements.
+*   **Keyword Extraction**: Flags missing technical items relative to target job specifications.
+
+### 3. 💼 Job Matcher & Kanban Tracker (Module 3)
+*   **Compatibility Calculations**: Jobs compute a dynamic compatibility rating based on matching skills:
+    $$\text{Compatibility Score} = \left( \frac{\text{Skills Acquired}}{\text{Total Job Required Skills}} \right) \times 100$$
+*   **Skill Gap Notifications**: Highlights missing skills on each job card with direct links back to corresponding Roadmap nodes.
+*   **Kanban Dashboard**: Push applied jobs to track hiring stages (Applied ➔ Interviewing ➔ Offered) with full local caching.
+
+### 4. 🎤 Mock Interview Prep Room (Module 4)
+*   **Role-Specific Questions**: Features technical and behavioral question banks.
+*   **Speech Simulation**: Built-in voice input simulator for mock spoken responses.
+*   **Grading Scorecard**: Displays response completeness, vocabulary strength, STAR method criteria checks, and ideal model answers.
+
+---
+
+## 🛠️ Local Execution & Verification
+
+Since the codebase is serverless and dependency-free, it can be tested instantly:
+
+1.  **Launch a Local Server**:
+    ```powershell
+    # In Windows PowerShell:
+    python -m http.server 8000
+    ```
+2.  **Open Browser**: Go to `http://localhost:8000/`.
+3.  **Data Caching**: All progress (completions, resumes, Kanban stages, and test answers) is saved inside `localStorage`, meaning refreshing the browser preserves your work.
+
+---
+
+## ⚡ Deployment Blueprints
+
+*   **Vercel**: Deploy instantly with the Vercel CLI by typing `vercel` in the project root.
+*   **GitHub Pages**: Push changes to a repository and enable deployment under repository **Settings** ➔ **Pages**.
+*   **Netlify**: Drag and drop this folder directly into the Netlify Dashboard upload box.
