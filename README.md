@@ -101,10 +101,4 @@ Since the codebase is serverless and dependency-free, it can be tested instantly
 2.  **Open Browser**: Go to `http://localhost:8000/`.
 3.  **Data Caching**: All progress (completions, resumes, Kanban stages, and test answers) is saved inside `localStorage`, meaning refreshing the browser preserves your work.
 
----
 
-## ⚡ Deployment Blueprints
-
-*   **Vercel**: Deploy instantly with the Vercel CLI by typing `vercel` in the project root.
-*   **GitHub Pages**: Push changes to a repository and enable deployment under repository **Settings** ➔ **Pages**.
-*   **Netlify**: Drag and drop this folder directly into the Netlify Dashboard upload box.
